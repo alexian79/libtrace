@@ -111,7 +111,8 @@ extern "C"
     void TpiuSetup(const TpiuOptions* options)
     {
         CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; // Enable ITM and DWT
-
+        TPI->FFCR = 0;
+        TPI->FFCR = 0;
         TPI->ACPR = options->SwoPrescaler - 1;
         TPI->SPPR = (int)options->Protocol;
         TPI->CSPSR = 1 << (options->TracePortWidth - 1);
